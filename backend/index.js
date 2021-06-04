@@ -20,8 +20,11 @@ testRouter.use((req, res, next)=>{
 }) ; 
 
 testRouter.get('/',(req, res)=>{
-    console.log('reached here') ; 
-    res.send('welcome to the test page') ; 
+    console.log('reached') ; 
+    pool.query(`SELECT * FROM medbox.users`, function(error, result){
+    if(error) throw error ; 
+    console.log(result) ; 
+}) ; 
 }) ; 
 
 
