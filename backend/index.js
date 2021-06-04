@@ -5,7 +5,7 @@ const mysql = require('mysql') ;
 const app = express() ; 
 const port = process.env.PORT || 4000 ; 
 
-const pool = require('../database'); 
+const pool = require('./database'); 
 
 
 const authRouter = express.Router() ; 
