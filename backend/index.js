@@ -6,7 +6,7 @@ const app = express() ;
 const port = process.env.PORT || 4000 ; 
 
 const pool = require('./database'); 
-
+console.log('got the pool')
 
 const authRouter = express.Router() ; 
 const testRouter = express.Router() ; 
