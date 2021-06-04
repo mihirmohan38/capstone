@@ -6,7 +6,7 @@ const app = express() ;
 const port = process.env.PORT || 4000 ; 
 
 const pool = require('./database'); 
-console.log('got the pool')
+
 
 const authRouter = express.Router() ; 
 const testRouter = express.Router() ; 
@@ -14,8 +14,6 @@ const testRouter = express.Router() ;
 
 
 testRouter.use((req, res, next)=>{
-    // random code 
-    console.log('here') ; 
     next() ; 
 }) ; 
 
@@ -23,8 +21,10 @@ testRouter.get('/',(req, res)=>{
     console.log('reached') ; 
     pool.query(`SELECT * FROM medbox.users`, function(error, result){
     if(error) throw error ; 
-    console.log(result) ; 
+    res.json(result)
 }) ; 
+
+    //res.send('welcome to the test page')
 }) ; 
 
 
@@ -34,23 +34,31 @@ authRouter.use((req, res, next) => {
     next() ; 
 }) ; 
 
-authRouter.put('/register', (req, res) => {
-    // the code to provide a response 
+authRouter.post('/register', (req, res) => {
+    //the code to provide a response 
     var username = req.body.username ; 
     var password = req.body.password ; 
+    console.log(username,password) ; 
+    var query = 'INSERT INTO users(username, password) VALUES(?, ?)'
+    const values = [username, password]
+    pool.query(query,values,(error, result)=>{
+        if (error) throw error;
+        console.log(result) ; 
+    }) ; 
+    res.send({'auth': 'success'}) ;
 
 }) ;
 
 authRouter.get('/login', (req, res)=>{
     var username = req.body.username ; 
     var password = req.body.password ; 
+    console.log('reached-here')
     pool.query('SELECT password FROM users WHERE username=?',username,(error, result)=>{
         if (error) throw error;
-        if (password===result){
-            // procvide access
-            response.send(result,password)
+        console.log(password, result[0]['password'])
+        if (password===result[0]['password']){
+            res.json({'auth': 'success'}) ; 
         }
-         ;
     }) ; 
 }) ; 
 
