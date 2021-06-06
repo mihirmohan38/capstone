@@ -37,26 +37,7 @@ pool.query(`SELECT * FROM medbox.users`, function(error, result){
     console.log(result) ; 
 }) ; 
 
-// config.connect(function(error) {
-    
-//     console.log('here')
-//     //config.query('use medbox ; ') ; 
-//     config.query(`SELECT * FROM medbox.users`, function(error, result, fields) {
-//         if (error) throw error;
-//         console.log(result) ; 
-//     });
-//     console.log("Connected!");
-//     // console.log(config)
-//     config.end();
-    
-// });
+
 
 module.exports = pool; 
 
-//   config.connect(function(err) {
-//     if (err) throw err;
-//     console.log("Connected!");
-//     console.log(config)
-//     config.end();
-    
-// });

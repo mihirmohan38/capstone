@@ -1,18 +1,21 @@
-const mysql = require('mysql') ; 
+const express = require('express') ; 
 
-const config =  mysql.createConnection({
-    host: 'capstone.cpwkghnwud3x.ap-southeast-1.rds.amazonaws.com',
-    user: 'admin',
-    password: 'password',
-    //port: '3306',
-    database: 'medbox'
-  }) ; 
- 
-  config.connect() ; 
+const pool = require('./database'); 
+const testRouter = express.Router() ; 
 
-  config.query('SELECT * from medbox.users', function(err, rows, fields) {
-    if(err) console.log(err);
-    console.log('The solution is: ', rows);
-    config.end();
-});
 
+testRouter.use((req, res, next)=>{
+    next() ; 
+}) ; 
+
+testRouter.get('/',(req, res)=>{
+    console.log('reached') ; 
+    pool.query(`SELECT * FROM medbox.users`, function(error, result){
+    if(error) throw error ; 
+    res.json(result)
+        }) ;    
+    }) ; 
+
+module.exports = testRouter; 
+
+    
