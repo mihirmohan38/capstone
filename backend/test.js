@@ -66,6 +66,9 @@ testRouter.get('/you', function(req, res, next){
 
 }) ; 
 
+testRouter.get('/ping', function (req, res, next){
+    res.send('hello') ; 
+}) ; 
 
 
 
