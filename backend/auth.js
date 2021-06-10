@@ -46,7 +46,7 @@ authRouter.post('/register', (req, res) => {
     }) ; 
 }) ;
 
-authRouter.get('/login', (req, res)=>{
+authRouter.post('/login', (req, res)=>{
     var username = req.body.username ; 
     var password = req.body.password ; 
     //var token = req.headers["jwt"];
