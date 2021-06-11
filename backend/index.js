@@ -8,6 +8,7 @@ const port = process.env.PORT || 4000 ;
 const testRouter = require('./test') ; 
 const authRouter = require('./auth') ; 
 const logsRouter = require('./logs') ; 
+const medboxAuthRouter = require('./medboxAuth') ; 
 
 
 // setting up the end points 
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 app.use('/auth',authRouter) ; 
 app.use('/logs', logsRouter) ; 
 app.use('/', testRouter) ; 
+app.use('/medboxAuth', medboxAuthRouter) ; 
 
 
 
