@@ -32,7 +32,7 @@ function getAll(){
         }) ; 
 }
 
-pool.query(`SELECT * FROM medbox.users`, function(error, result){
+pool.query(`SELECT * FROM medbox.users LIMIT 1`, function(error, result){
     if(error) throw error ; 
     console.log(result) ; 
 }) ; 
