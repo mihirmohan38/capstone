@@ -9,7 +9,8 @@ const testRouter = require('./test') ;
 const authRouter = require('./auth') ; 
 const logsRouter = require('./logs') ; 
 const medboxAuthRouter = require('./medboxAuth') ; 
-const onboardRouter = require('./onboard') ; 
+const onboardRouter = require('./onboard') ;
+const notificationRouter = require("./GCM/notification") ; 
 
 
 // setting up the end points 
@@ -25,6 +26,7 @@ app.use('/logs', logsRouter) ;
 app.use('/', testRouter) ; 
 app.use('/medboxAuth', medboxAuthRouter) ; 
 app.use('/onboard', onboardRouter) ; 
+app.use('./notification', notificationRouter) ; 
 
 
 

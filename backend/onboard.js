@@ -48,9 +48,9 @@ onboardRouter.post('/register', (req, res) => {
 }) ;
 
 onboardRouter.post('/authenticate', (req, res)=>{
-    var medboxID = req.body.medboxID ; 
-    var password = req.body.password ; 
-    var username = req.body.username ; 
+    var medboxID = req.body.medboxID ;  // user input 
+    var password = req.body.password ;  // user input 
+    var username = req.body.username ;  // local memory 
     
     var exists = 'SELECT * FROM onboarding WHERE medboxID=? AND expiration>NOW()+1 AND password=? LIMIT 1' ;
     var values = [medboxID, password]
